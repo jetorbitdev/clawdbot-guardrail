@@ -6,6 +6,8 @@ This repository contains a specialized system prompt configuration (`agents.md` 
 
 Giving an AI agent direct access to your local terminal and filesystem is powerful but carries risks. This guardrail acts as a **safety layer** to prevent accidental system damage and data leaks while maintaining high operational efficiency.
 
+![Clawdbot Guardrails Overview](ss.png)
+
 ## Consent Model
 
 All operations are classified into tiers with appropriate consent requirements:
