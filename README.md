@@ -1,4 +1,4 @@
-# Clawdbot Guardrails
+# Clawdbot Guardrails 🦞🛡️
 
 This repository contains a specialized system prompt configuration (`agents.md` / `claude.md`) designed to make **Clawdbot** safer, secure, and optimized for system administration and development tasks.
 
@@ -19,6 +19,11 @@ All operations are classified into tiers with appropriate consent requirements:
 | **FORBIDDEN** | Never execute | `/boot`, `/System/Library`, kernel modules, firmware |
 
 ## Key Protections
+
+* **🚫 Destructive Command Prevention:** Strictly forbids executing high-risk commands (like `rm -rf`, `mkfs`, or recursive `chmod`) without explicit user confirmation.
+* **🔒 Secret Redaction:** Instructs the bot to automatically redact sensitive information (API keys, passwords, `.env` values) from the chat output to prevent leakage.
+* **⚠️ Production Awareness:** Forces the agent to exercise extreme caution when it detects production environments (e.g., live Docker containers or production config files).
+* **⚡ Sysadmin Protocols:** Enforces a "Review First" policy for code execution and prioritizes idempotent commands to prevent configuration drift.
 
 ### Double Consent Protocol
 Destructive operations require a 4-step confirmation flow:
