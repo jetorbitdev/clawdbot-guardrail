@@ -22,3 +22,5 @@ Giving an AI agent direct access to your local terminal and filesystem is powerf
 ---
 
 **Note:** While these guardrails significantly reduce risk, always review code and terminal commands before allowing the agent to execute them. You are the final gatekeeper of your system.
+
+by Jetorbit SysopsDev Team
