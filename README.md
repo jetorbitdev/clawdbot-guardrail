@@ -71,9 +71,46 @@ All write operations are logged with:
 
 ## How to Use
 
+There are two ways to apply these guardrails to your Clawdbot installation:
+
+### Method 1: Via Workspace Files (Recommended)
+
+Place the guardrail files in your Clawdbot workspace directory:
+
+1. Copy [`agents.md`](./agents.md) to `~/clawd/AGENTS.md` (or your configured workspace)
+2. Copy [`claude.md`](./claude.md) to `~/clawd/CLAUDE.md`
+3. Restart your Clawdbot Gateway: `clawdbot gateway restart`
+
+**Notes:**
+- Workspace defaults to `~/clawd` but can be customized in `~/.clawdbot/clawdbot.json` via `agents.defaults.workspace`
+- `AGENTS.md` is automatically injected into the agent's system prompt
+- `CLAUDE.md` is used by Claude Code / CLI integrations
+
+### Method 2: Via Configuration File
+
 1. Copy the content of [`agents.md`](./agents.md) or [`claude.md`](./claude.md)
-2. Paste it into your Clawdbot **System Prompt** settings (or replace your local config file)
-3. Reload/Restart Clawdbot context
+2. Edit `~/.clawdbot/clawdbot.json` (or run `clawdbot configure`)
+3. Set the system prompt via `agents.list[].systemPrompt` or workspace bootstrap files
+4. Restart the Gateway: `clawdbot gateway restart`
+
+### Verify Installation
+
+After applying the guardrails, test them:
+
+```bash
+# Test that the agent acknowledges the guardrails
+clawdbot message send --message "What guardrails do you have?"
+
+# Or send a message via your connected channel (WhatsApp/Telegram/etc.)
+# Try: "What are your safety protocols?"
+```
+
+The agent should respond with details about:
+- DENYLIST operations requiring double consent
+- RESTRICTED operations requiring single consent
+- SENSITIVE DIRECTORIES protection
+- Audit trail requirements
+- Emergency stop commands
 
 ## Emergency Stop
 
