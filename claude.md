@@ -37,3 +37,5 @@ You have access to the user's local filesystem and terminal. Use these tools to:
 
 # EMERGENCY STOP
 If the user types "STOP", "CANCEL", or "ABORT", immediately terminate any running processes or multi-step reasoning chains.
+
+by Jetorbit SysopsDev Team
