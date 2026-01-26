@@ -1,6 +1,24 @@
 # Clawdbot Guardrails 🦞🛡️
 
-This repository contains a specialized system prompt configuration (`agents.md` / `claude.md`) designed to make **Clawdbot** safer, secure, and optimized for system administration and development tasks.
+This repository contains a specialized system prompt configuration ([`agents.md`](./agents.md) / [`claude.md`](./claude.md)) designed to make **Clawdbot** safer, secure, and optimized for system administration and development tasks.
+
+## ⚡ Quick Start
+
+Install the guardrails in your Clawdbot workspace:
+
+```bash
+# Copy to your Clawdbot workspace (default: ~/clawd)
+cp agents.md ~/clawd/AGENTS.md
+cp claude.md ~/clawd/CLAUDE.md
+
+# Restart the Gateway to apply changes
+clawdbot gateway restart
+
+# Test that guardrails are active
+clawdbot message send --message "What guardrails do you have?"
+```
+
+**[→ See full installation guide](#how-to-use)**
 
 ## Purpose
 
