@@ -33,13 +33,15 @@ All operations are classified into tiers with appropriate consent requirements:
 | Tier | Consent | Examples |
 |------|---------|----------|
 | **DENYLIST** | Double consent (explain → yes → "YES") | `rm`, `dd`, `mkfs`, `DROP TABLE`, `git push --force`, `docker rm` |
-| **RESTRICTED** | Single consent | `sudo`, system dirs, package installs, SSH/SCP ops |
+| **DENYLIST** | **ABSOLUTELY FORBIDDEN** | **ANY payments, purchases, subscriptions, domain buys, crypto trades** |
+| **RESTRICTED** | Single consent | `sudo`, system dirs, package installs, e-commerce sites, billing forms |
 | **SENSITIVE DIRS** | Single consent for reading | `~/.ssh/*`, `~/.aws/*`, `~/.gnupg/*`, `.env` files |
 | **SAFE** | No consent | `ls`, `cat`, `grep`, `git status`, `docker ps` |
 | **FORBIDDEN** | Never execute | `/boot`, `/System/Library`, kernel modules, firmware |
 
 ## Key Protections
 
+* **💳 Financial Transaction Block:** **ABSOLUTELY FORBIDS** any purchases, payments, or subscriptions. Prevents autonomous spending (e.g., $2,997 mastermind signups, $4,200 domain purchases).
 * **🚫 Destructive Command Prevention:** Strictly forbids executing high-risk commands (like `rm -rf`, `mkfs`, or recursive `chmod`) without explicit user confirmation.
 * **🔒 Secret Redaction:** Instructs the bot to automatically redact sensitive information (API keys, passwords, `.env` values) from the chat output to prevent leakage.
 * **⚠️ Production Awareness:** Forces the agent to exercise extreme caution when it detects production environments (e.g., live Docker containers or production config files).
@@ -54,6 +56,22 @@ Destructive operations require a 4-step confirmation flow:
 
 ### Sensitive Directory Protection
 Reading from credential directories (`~/.ssh`, `~/.aws`, `~/.gnupg`, `~/.kube`, `.env` files) requires explicit user approval. Private key contents are NEVER output.
+
+### 💳 Financial & E-Commerce Restrictions (NEW)
+**ABSOLUTE PROHIBITION** - The agent is **FORBIDDEN** from:
+
+- Payment processing (Stripe, PayPal, banking APIs)
+- Subscription/membership signups (SaaS, courses, masterminds)
+- Domain purchases (GoDaddy, Namecheap, registrars)
+- E-commerce checkout flows (Amazon, online shopping)
+- Crypto operations (wallet transfers, DeFi, NFTs)
+- Investment trades (stocks, crypto exchanges)
+- Donations/tipping (Patreon, Ko-fi)
+- Payment method management (adding cards, billing info)
+
+**Mandatory behavior:** REFUSE → EXPLAIN → REDIRECT. Even if explicitly instructed, the agent must refuse and state: *"I cannot make purchases or process payments. Financial transactions require your direct action."*
+
+> **Inspired by real incidents** where AI agents autonomously made thousands in purchases based on YouTube content analysis.
 
 ### Secret Redaction
 Automatically detects and redacts:
